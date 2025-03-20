@@ -17,7 +17,7 @@ public class ProduitService {
     @Autowired
     private ProduitRepository produitRepository;
 
-    public List<Produit> getAll() {
+    public List<Produit> getAllProduits() {
 
         if (produitRepository.count() == 0) {
             throw new ProduitsNotFoundException();
@@ -31,7 +31,7 @@ public class ProduitService {
         return produits;
     }
 
-    public Produit getById(Long id) {
+    public Produit getProduitById(Long id) {
 
         if(produitRepository.findById(id).isEmpty()){
             throw new ProduitNotFoundException(id);
@@ -40,13 +40,13 @@ public class ProduitService {
         return produitRepository.findById(id).get();
     }
 
-    public Produit save(Produit produit) {
-        List<Produit> produits = getAll();
-        for (Produit p : produits) {
-           if(p.getNom().equals(produit.getNom())){
-                throw new ProduitAlreadyExistsException(produit.getNom());
+    public Produit saveProduit(Produit newProduit) {
+        List<Produit> produits = getAllProduits();
+        for (Produit produit : produits) {
+           if(produit.getNom().equals(newProduit.getNom())){
+                throw new ProduitAlreadyExistsException(newProduit.getNom());
            }
         }
-        return produitRepository.save(produit);
+        return produitRepository.save(newProduit);
     }
 }
