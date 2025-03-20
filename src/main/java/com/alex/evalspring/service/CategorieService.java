@@ -39,12 +39,18 @@ public class CategorieService {
     }
 
     public Categorie saveCategorie(Categorie newCategorie) {
+
+        if(newCategorie.getLibelle() == null || newCategorie.getLibelle().isEmpty()) {
+            throw new CategorieMissingParametersException(newCategorie);
+        }
+
         List<Categorie> categories = getAllCategories();
         for (Categorie categorie : categories) {
             if(categorie.getLibelle().equals(newCategorie.getLibelle())){
                 throw new CategorieAlreadyExistsException(newCategorie.getLibelle());
             }
         }
+
         return categorieRepository.save(newCategorie);
     }
 }

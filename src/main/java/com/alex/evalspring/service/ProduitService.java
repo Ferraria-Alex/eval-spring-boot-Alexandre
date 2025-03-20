@@ -1,6 +1,7 @@
 package com.alex.evalspring.service;
 
 import com.alex.evalspring.exception.ProduitAlreadyExistsException;
+import com.alex.evalspring.exception.ProduitMissingParametersException;
 import com.alex.evalspring.exception.ProduitNotFoundException;
 import com.alex.evalspring.exception.ProduitsNotFoundException;
 import com.alex.evalspring.model.Produit;
@@ -41,12 +42,18 @@ public class ProduitService {
     }
 
     public Produit saveProduit(Produit newProduit) {
+
+        if(newProduit.getNom() == null || newProduit.getNom().isEmpty() || newProduit.getPrix() == null || newProduit.getPrix().isNaN()) {
+            throw new ProduitMissingParametersException(newProduit);
+        }
+
         List<Produit> produits = getAllProduits();
         for (Produit produit : produits) {
            if(produit.getNom().equals(newProduit.getNom())){
                 throw new ProduitAlreadyExistsException(newProduit.getNom());
            }
         }
+
         return produitRepository.save(newProduit);
     }
 }
