@@ -47,11 +47,13 @@ public class ProduitService {
             throw new ProduitMissingParametersException(newProduit);
         }
 
-        List<Produit> produits = getAllProduits();
-        for (Produit produit : produits) {
-           if(produit.getNom().equals(newProduit.getNom())){
-                throw new ProduitAlreadyExistsException(newProduit.getNom());
-           }
+        if(produitRepository.count() != 0) {
+            List<Produit> produits = getAllProduits();
+            for (Produit produit : produits) {
+                if(produit.getNom().equals(newProduit.getNom())){
+                    throw new ProduitAlreadyExistsException(newProduit.getNom());
+                }
+            }
         }
 
         return produitRepository.save(newProduit);

@@ -1,9 +1,7 @@
 package com.alex.evalspring.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name="Produit")
@@ -19,7 +17,7 @@ public class Produit {
     private String nom;
 
     @Column(name="prix", nullable = false)
-    @NotBlank(message = "Le champ est vide, veuillez le remplir correctement")
+    @NotNull(message = "Le champ est vide, veuillez le remplir correctement")
     @Positive(message = "Le nombre doit être un nombre positif supérieur à 0")
     private Double prix;
 
@@ -28,11 +26,6 @@ public class Produit {
     private Categorie categorie;
 
     public Produit() {}
-
-    public Produit(String nom, Double prix) {
-        this.nom = nom;
-        this.prix = prix;
-    }
 
     public Produit(String nom, Double prix, Categorie categorie) {
         this.nom = nom;

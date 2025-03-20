@@ -17,7 +17,7 @@ public class ExceptionController {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ResponseEntity<Map<String, String>> handleProduitNotFound(ProduitNotFoundException e) {
         Map<String, String> errors = new HashMap<>();
-        errors.put("Error : ", e.getMessage());
+        errors.put("Error", e.getMessage());
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
                 .body(errors);
@@ -27,7 +27,7 @@ public class ExceptionController {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ResponseEntity<Map<String, String>> handleProduitsNotFound(ProduitsNotFoundException e) {
         Map<String, String> errors = new HashMap<>();
-        errors.put("Error : ", e.getMessage());
+        errors.put("Error", e.getMessage());
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
                 .body(errors);
@@ -37,7 +37,7 @@ public class ExceptionController {
     @ResponseStatus(HttpStatus.CONFLICT)
     public ResponseEntity<Map<String, String>> handleProduitAlreadyExists(ProduitAlreadyExistsException e) {
         Map<String, String> errors = new HashMap<>();
-        errors.put("Error : ", e.getMessage());
+        errors.put("Error", e.getMessage());
         return ResponseEntity
                 .status(HttpStatus.CONFLICT)
                 .body(errors);
@@ -47,7 +47,7 @@ public class ExceptionController {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseEntity<Map<String, String>> handleProduitMissingParameters(ProduitMissingParametersException e) {
         Map<String, String> errors = new HashMap<>();
-        errors.put("Error : ", e.getMessage());
+        errors.put("Error", e.getMessage());
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
                 .body(errors);
@@ -57,7 +57,7 @@ public class ExceptionController {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ResponseEntity<Map<String, String>> handleCategorieNotFound(CategorieNotFoundException e) {
         Map<String, String> errors = new HashMap<>();
-        errors.put("Error : ", e.getMessage());
+        errors.put("Error", e.getMessage());
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
                 .body(errors);
@@ -67,7 +67,7 @@ public class ExceptionController {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ResponseEntity<Map<String, String>> handleCategoriesNotFound(CategoriesNotFoundException e) {
         Map<String, String> errors = new HashMap<>();
-        errors.put("Error : ", e.getMessage());
+        errors.put("Error", e.getMessage());
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
                 .body(errors);
@@ -77,7 +77,7 @@ public class ExceptionController {
     @ResponseStatus(HttpStatus.CONFLICT)
     public ResponseEntity<Map<String, String>> handleCategorieAlreadyExists(CategorieAlreadyExistsException e) {
         Map<String, String> errors = new HashMap<>();
-        errors.put("Error : ", e.getMessage());
+        errors.put("Error", e.getMessage());
         return ResponseEntity
                 .status(HttpStatus.CONFLICT)
                 .body(errors);
@@ -87,7 +87,7 @@ public class ExceptionController {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseEntity<Map<String, String>> handleCategorieMissingParameters(CategorieMissingParametersException e) {
         Map<String, String> errors = new HashMap<>();
-        errors.put("Error : ", e.getMessage());
+        errors.put("Error", e.getMessage());
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
                 .body(errors);

@@ -44,10 +44,12 @@ public class CategorieService {
             throw new CategorieMissingParametersException(newCategorie);
         }
 
-        List<Categorie> categories = getAllCategories();
-        for (Categorie categorie : categories) {
-            if(categorie.getLibelle().equals(newCategorie.getLibelle())){
-                throw new CategorieAlreadyExistsException(newCategorie.getLibelle());
+        if(categorieRepository.count() != 0) {
+            List<Categorie> categories = getAllCategories();
+            for (Categorie categorie : categories) {
+                if(categorie.getLibelle().equals(newCategorie.getLibelle())){
+                    throw new CategorieAlreadyExistsException(newCategorie.getLibelle());
+                }
             }
         }
 
